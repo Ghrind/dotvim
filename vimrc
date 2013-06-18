@@ -1,4 +1,5 @@
 execute pathogen#infect()
+execute pathogen#helptags()
 
 syntax on
 set nu
