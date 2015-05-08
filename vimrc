@@ -1,5 +1,5 @@
 execute pathogen#infect()
-execute pathogen#helptags()
+" execute pathogen#helptags()
 
 syntax on
 set nu
@@ -13,6 +13,8 @@ set softtabstop=2
 set expandtab
 set autoindent
 
+set tabpagemax=20
+
 :map <F2> :tabp<CR>
 :map <F3> :tabn<CR>
 
@@ -25,6 +27,8 @@ set autoindent
 " Copy paste into/from default clipboard
 :map <F8> "+y
 :map <F9> "+p
+
+:set hlsearch
 
 "Git branch
 "function! GitBranch()
@@ -48,3 +52,6 @@ colorscheme mustang
 
 " gitgutter column color
 highlight clear SignColumn
+
+" Font for gvim
+set guifont=DejaVu\ Sans\ Mono\ 11
