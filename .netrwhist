@@ -1,8 +1,11 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/home/norge/apps/jobteaser/lib'
 let g:netrw_dirhist_2='/home/norge/apps/jobteaser/vendor/ruby/2.2.0/gems/redis-session-store-0.8.0'
 let g:netrw_dirhist_3='/home/norge/apps/jobteaser/vendor/ruby/2.2.0/gems/redis-session-store-0.8.0/lib'
 let g:netrw_dirhist_4='/home/norge/apps/gitgut/lib/gitgut'
 let g:netrw_dirhist_5='/home/norge/apps/gitgut/lib'
 let g:netrw_dirhist_6='/home/norge/apps/jobteaser/app/services/create_job_offer_service'
+let g:netrw_dirhist_7='/home/norge/.vim/bundle/vim-bundler'
+let g:netrw_dirhist_8='/home/norge/.vim/bundle/vim-bundler/.git'
+let g:netrw_dirhist_9='/home/norge/apps/tech_talks'
