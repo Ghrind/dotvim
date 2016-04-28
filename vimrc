@@ -35,7 +35,23 @@ set autoindent
 set tabpagemax=20
 
 " Highlight all search pattern matches
-:set hlsearch
+set hlsearch
+" Clear highlighted search
+nmap <silent> ,/ :nohlsearch<CR>
+
+" show search matches as you type
+set incsearch
+
+" change the terminal's title
+set title
+
+" don't beep
+set visualbell
+set noerrorbells
+
+" Don't bother me with swap files
+set nobackup
+set noswapfile
 
 " Status line
 set statusline=%F%m%r%h%w\ [ENC=%{(&fenc==\"\"?&enc:&fenc)}]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
@@ -83,6 +99,9 @@ endfunction
 " Issue a find command using regex and open results in a new tab.
 command! -nargs=+ Find call s:RunShellCommandInTab('find . -iregex '.<q-args>)
 
+" Issue an ag command
+command! -nargs=+ S call s:RunShellCommandInTab('ag "'.<q-args>.'"')
+
 " Search for visually selected text
 " Hightlight some text and type // to search for it
 " http://vim.wikia.com/wiki/Search_for_visually_selected_text
@@ -109,3 +128,50 @@ vnoremap // y/<C-R>"<CR>
 " Copy paste into/from default clipboard
 :map <F8> "+y
 :map <F9> "+p
+
+" Jump to the next or previous line that has the same level or a lower
+" level of indentation than the current line.
+"
+" exclusive (bool): true: Motion is exclusive
+" false: Motion is inclusive
+" fwd (bool): true: Go to next line
+" false: Go to previous line
+" lowerlevel (bool): true: Go to line with lower indentation level
+" false: Go to line with the same indentation level
+" skipblanks (bool): true: Skip blank lines
+" false: Don't skip blank lines
+function! NextIndent(exclusive, fwd, lowerlevel, skipblanks)
+  let line = line('.')
+  let column = col('.')
+  let lastline = line('$')
+  let indent = indent(line)
+  let stepvalue = a:fwd ? 1 : -1
+  while (line > 0 && line <= lastline)
+    let line = line + stepvalue
+    if ( ! a:lowerlevel && indent(line) == indent ||
+          \ a:lowerlevel && indent(line) < indent)
+      if (! a:skipblanks || strlen(getline(line)) > 0)
+        if (a:exclusive)
+          let line = line - stepvalue
+        endif
+        exe line
+        exe "normal " column . "|"
+        return
+      endif
+    endif
+  endwhile
+endfunction
+
+" Moving back and forth between lines of same or lower indentation.
+nnoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
+nnoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
+nnoremap <silent> [L :call NextIndent(0, 0, 1, 1)<CR>
+nnoremap <silent> ]L :call NextIndent(0, 1, 1, 1)<CR>
+vnoremap <silent> [l <Esc>:call NextIndent(0, 0, 0, 1)<CR>m'gv''
+vnoremap <silent> ]l <Esc>:call NextIndent(0, 1, 0, 1)<CR>m'gv''
+vnoremap <silent> [L <Esc>:call NextIndent(0, 0, 1, 1)<CR>m'gv''
+vnoremap <silent> ]L <Esc>:call NextIndent(0, 1, 1, 1)<CR>m'gv''
+onoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
+onoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
+onoremap <silent> [L :call NextIndent(1, 0, 1, 1)<CR>
+onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
