@@ -175,3 +175,9 @@ onoremap <silent> [l :call NextIndent(0, 0, 0, 1)<CR>
 onoremap <silent> ]l :call NextIndent(0, 1, 0, 1)<CR>
 onoremap <silent> [L :call NextIndent(1, 0, 1, 1)<CR>
 onoremap <silent> ]L :call NextIndent(1, 1, 1, 1)<CR>
+
+" CTRL-P opens in new tab by default
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
