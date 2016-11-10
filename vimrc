@@ -1,6 +1,9 @@
 " Enable the vim pathogen plugin manager
 execute pathogen#infect()
 
+" Powerline font for airline
+let g:airline_powerline_fonts = 1
+
 " Disable folding for the markdown plugin
 " https://github.com/plasticboy/vim-markdown#disable-folding
 let g:vim_markdown_folding_disabled = 1
@@ -52,9 +55,6 @@ set noerrorbells
 " Don't bother me with swap files
 set nobackup
 set noswapfile
-
-" Status line
-set statusline=%F%m%r%h%w\ [ENC=%{(&fenc==\"\"?&enc:&fenc)}]\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 
 " Always show the status line
 set laststatus=2
