@@ -22,3 +22,6 @@
 [submodule "bundle/indexed-search"]
 	path = bundle/indexed-search
 	url = https://github.com/henrik/vim-indexed-search.git
+[submodule "bundle/fzf"]
+	path = bundle/fzf
+	url = http://github.com/junegunn/fzf.vim.git
