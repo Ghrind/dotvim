@@ -1,6 +1,10 @@
 " Enable the vim pathogen plugin manager
 execute pathogen#infect()
 
+" FZF
+set rtp+=~/.fzf
+map <C-p> :FZF<CR>
+
 " Powerline font for airline
 let g:airline_powerline_fonts = 1
 
