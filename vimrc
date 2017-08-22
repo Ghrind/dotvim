@@ -1,6 +1,23 @@
 " Enable the vim pathogen plugin manager
 execute pathogen#infect()
 
+" jj to escape insert mode
+imap jj <Esc>
+
+" No arrows :)
+inoremap <Left>  <NOP>
+inoremap <Right> <NOP>
+inoremap <Up>    <NOP>
+inoremap <Down>  <NOP>
+inoremap <PageDown>  <NOP>
+inoremap <PageUp>  <NOP>
+noremap <Left>  <NOP>
+noremap <Right> <NOP>
+noremap <Up>    <NOP>
+noremap <Down>  <NOP>
+noremap <PageDown>  <NOP>
+noremap <PageUp>  <NOP>
+
 " FZF
 set rtp+=~/.fzf
 map <C-p> :FZF<CR>
