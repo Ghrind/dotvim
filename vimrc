@@ -71,6 +71,7 @@ set title
 
 " don't beep
 set visualbell
+set t_vb=
 set noerrorbells
 
 " Don't bother me with swap files
