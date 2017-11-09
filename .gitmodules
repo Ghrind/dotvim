@@ -25,3 +25,6 @@
 [submodule "bundle/fzf"]
 	path = bundle/fzf
 	url = http://github.com/junegunn/fzf.vim.git
+[submodule "bundle/vim-crystal"]
+	path = bundle/vim-crystal
+	url = https://github.com/rhysd/vim-crystal.git
