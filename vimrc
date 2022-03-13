@@ -1,5 +1,11 @@
-" Enable the vim pathogen plugin manager
-execute pathogen#infect()
+call plug#begin()
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'airblade/vim-gitgutter'
+Plug 'bogado/file-line'
+Plug 'henrik/vim-indexed-search'
+call plug#end()
 
 " jj to escape insert mode
 imap jj <Esc>
@@ -20,7 +26,7 @@ noremap <PageUp>  <NOP>
 
 " FZF
 set rtp+=~/.fzf
-map <C-p> :FZF<CR>
+map <C-p> :GFiles<CR>
 
 " Powerline font for airline
 let g:airline_powerline_fonts = 1
